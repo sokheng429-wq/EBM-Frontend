@@ -1,10 +1,32 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from "../context/useAuth";
 
+// Normalize whatever shape the backend returns for the user's role(s)
+const getUserRole = (user) => {
+  if (!user) return "";
+  const raw = user.role ?? user.roles ?? user.authority ?? user.authorities;
+  let roleStr = "";
+  if (Array.isArray(raw)) {
+    roleStr = raw
+      .map((r) => (typeof r === "string" ? r : r?.authority || r?.name || ""))
+      .join(",");
+  } else if (typeof raw === "string") {
+    roleStr = raw;
+  } else if (raw && typeof raw === "object") {
+    roleStr = raw.authority || raw.name || "";
+  }
+  return roleStr.toUpperCase();
+};
+
 const Navbar = () => {
   const navigate = useNavigate();
   const { isLoggedIn, logout, user } = useAuth();
   const displayName = user?.name || user?.fullName || user?.username || user?.email || "User";
+
+  const handleProfileClick = () => {
+    const role = getUserRole(user);
+    navigate(role.includes("ADMIN") ? "/admin" : "/customer");
+  };
 
   const handleToursClick = () => {
     navigate("/");
@@ -79,9 +101,14 @@ const Navbar = () => {
                   </>
               ) : (
                   <>
-                    <span className="navbar-user-badge me-2">
-                            👋 {displayName}
-                          </span>
+                    <button
+                        type="button"
+                        onClick={handleProfileClick}
+                        className="navbar-user-badge me-2"
+                        title="View profile"
+                    >
+                      👋 {displayName}
+                    </button>
 
                     <button
                         onClick={handleLogout}
