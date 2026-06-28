@@ -24,7 +24,10 @@ function App() {
         path="/"
         element={
           <MainLayout>
-            <Home />
+            <>
+              
+              <Home />
+            </>
           </MainLayout>
         }
       />
@@ -33,7 +36,10 @@ function App() {
         path="/ourmission"
         element={
           <MainLayout>
-            <OurMission />
+            <>
+              
+              <OurMission />
+            </>
           </MainLayout>
         }
       />
@@ -42,7 +48,10 @@ function App() {
         path="/aboutus"
         element={
           <MainLayout>
-            <Aboutus />
+            <>
+              
+              <Aboutus />
+            </>
           </MainLayout>
         }
       />
@@ -51,7 +60,10 @@ function App() {
         path="/about"
         element={
           <MainLayout>
-            <Aboutus />
+            <>
+              
+              <Aboutus />
+            </>
           </MainLayout>
         }
       />
@@ -60,25 +72,31 @@ function App() {
         path="/booking"
         element={
           <MainLayout>
-            <Booking />
+            <>
+              
+              <Booking />
+            </>
           </MainLayout>
         }
       />
 
       <Route path="/customer" element={<Customer />} />
-        <Route path="/customer/history" element={<CustomerHistory />} />
-        <Route path="/customer/settings" element={<UserSetting />} />
+      <Route path="/customer/history" element={<CustomerHistory />} />
+      <Route path="/customer/settings" element={<UserSetting />} />
 
       <Route path="/admin" element={<Admin />} />
-        <Route path="/admin/bookings" element={<BookingList />} />
-        <Route path="/admin/guests" element={<Guests />} />
-        <Route path="/admin/reports" element={<Report />} />
+      <Route path="/admin/bookings" element={<BookingList />} />
+      <Route path="/admin/guests" element={<Guests />} />
+      <Route path="/admin/reports" element={<Report />} />
 
       <Route
         path="/login"
         element={
           <AuthLayout>
-            <Login />
+            <>
+              
+              <Login />
+            </>
           </AuthLayout>
         }
       />
@@ -87,7 +105,10 @@ function App() {
         path="/register"
         element={
           <AuthLayout>
-            <Register />
+            <>
+              
+              <Register />
+            </>
           </AuthLayout>
         }
       />

@@ -412,3 +412,21 @@ body {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-1px);
 }
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 25px;
+  background-color: #1e1e2f;
+  color: white;
+}
+
+.logo {
+  font-size: 28px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+}
