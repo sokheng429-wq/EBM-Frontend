@@ -5,12 +5,13 @@ const OurMission = () => {
     <div>
         
       {/* HERO SECTION */}
-      <section className="mission-hero text-white text-center d-flex align-items-center">
+      <section className="mission-hero text-center d-flex align-items-center">
         <div className="container">
-          <h1 className="display-4 fw-bold">
+          <h1 className="display-4 fw-bold text-green">
             Our Mission & Heart 🐘
           </h1>
-          <p className="lead mt-3">
+
+          <p className="lead mt-3 text-light">
             Protecting elephants and preserving Mondulkiri nature & culture
           </p>
         </div>
