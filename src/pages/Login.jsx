@@ -110,7 +110,7 @@ const Login = () => {
 
           {/* Google Login */}
           <a
-            href="http://localhost:8081/oauth2/authorization/google"
+            href="https://ebm-backend.onrender.com/oauth2/authorization/google"
             className="btn btn-light border w-100 mt-2 d-flex align-items-center justify-content-center gap-3 shadow-sm"
           >
             <FcGoogle size={24} />
@@ -119,7 +119,7 @@ const Login = () => {
 
           {/* Facebook Login */}
           <a
-            href="http://localhost:8081/oauth2/authorization/facebook"
+            href="https://ebm-backend.onrender.com/oauth2/authorization/facebook"
             className="btn btn-primary w-100 mt-2 d-flex align-items-center justify-content-center gap-3 shadow-sm"
           >
             <FaFacebookF size={20} />
