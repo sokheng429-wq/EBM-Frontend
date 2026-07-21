@@ -1,5 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createBooking } from '../api/BookingApi';
+import { getActiveTourPrices } from '../api/TourPriceApi';
+
+const FALLBACK_TOURS = [
+  'Half-Day Encounter',
+  'Full-Day Trek',
+  'Overnight Experience',
+];
 
 const initialForm = {
   fullName: '',
@@ -16,6 +23,22 @@ const Booking = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [tours, setTours] = useState([]);
+
+  // Load tour packages from the backend so admin-created prices show up.
+  // Fall back to a hardcoded list if the API is unreachable - the form
+  // still works, just without any new tours the admin may have added.
+  useEffect(() => {
+    let mounted = true;
+    getActiveTourPrices()
+      .then((res) => {
+        if (mounted) setTours(res.data.map((t) => t.name));
+      })
+      .catch(() => {
+        if (mounted) setTours(FALLBACK_TOURS);
+      });
+    return () => { mounted = false; };
+  }, []);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -121,9 +144,9 @@ const Booking = () => {
                 <option value="" disabled>
                   Select a tour
                 </option>
-                <option>Half-Day Encounter</option>
-                <option>Full-Day Trek</option>
-                <option>Overnight Experience</option>
+                {tours.map((t) => (
+                  <option key={t} value={t}>{t}</option>
+                ))}
               </select>
             </div>
 

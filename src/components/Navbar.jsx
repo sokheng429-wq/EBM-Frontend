@@ -80,11 +80,18 @@ const Navbar = () => {
             )}
 
             {isAdmin && (
-              <li className="nav-item">
-                <Link className="nav-link" to="/admin/bookings">
-                  Manage Bookings
-                </Link>
-              </li>
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/admin/bookings">
+                    Manage Bookings
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/admin/tour-prices">
+                    Tour Prices
+                  </Link>
+                </li>
+              </>
             )}
 
           </ul>

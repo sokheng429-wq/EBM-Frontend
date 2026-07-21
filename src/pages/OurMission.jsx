@@ -5,7 +5,7 @@ const OurMission = () => {
     <div>
         
       {/* HERO SECTION */}
-      <section className="mission-hero text-white text-center d-flex align-items-center">
+      <section className="mission-hero text-dark text-center d-flex align-items-center">
         <div className="container">
           <h1 className="display-4 fw-bold">
             Our Mission & Heart 🐘
