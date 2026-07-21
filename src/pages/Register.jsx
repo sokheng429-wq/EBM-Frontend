@@ -158,7 +158,7 @@ const Register = () => {
 
         {/* GOOGLE */}
         <a
-          href="http://localhost:8081/oauth2/authorization/google"
+          href="https://ebm-backend.onrender.com/oauth2/authorization/google"
           className="btn btn-outline-danger w-100 mt-2 d-flex align-items-center justify-content-center gap-2"
         >
           <FcGoogle size={22} />
@@ -167,7 +167,7 @@ const Register = () => {
 
         {/* FACEBOOK */}
         <a
-          href="http://localhost:8081/oauth2/authorization/facebook"
+          href="https://ebm-backend.onrender.com/oauth2/authorization/facebook"
           className="btn btn-outline-primary w-100 mt-2 d-flex align-items-center justify-content-center gap-2"
         >
           <FaFacebookF size={20} />
