@@ -1,9 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { FaSignOutAlt, FaCaretDown, FaUserShield, FaUserTie } from 'react-icons/fa';
 import { useAuth } from '../context/useAuth';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { isLoggedIn, isAdmin, user, logout } = useAuth();
+
+  // First letter of the username for the avatar circle.
+  const firstInitial = (user?.username || 'U').charAt(0).toUpperCase();
 
   // Smooth scroll to tours section
   const handleToursClick = () => {
@@ -100,17 +104,56 @@ const Navbar = () => {
           <div className="navbar-actions d-flex flex-column flex-lg-row gap-2 mt-3 mt-lg-0 align-items-lg-center">
 
             {isLoggedIn ? (
-              <>
-                <span className="text-white-50 small d-none d-lg-inline">
-                  Hi, {user?.username}
-                </span>
+              <div className="dropdown">
                 <button
-                  onClick={handleLogout}
-                  className="btn btn-outline-light px-3"
+                  className="user-chip"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
                 >
-                  Log Out
+                  <span className="user-avatar">{firstInitial}</span>
+                  <span className="user-greeting">
+                    <span className="user-hello">Hi,</span>
+                    <span className="user-name" title={user?.username}>
+                      {user?.username}
+                    </span>
+                  </span>
+                  <FaCaretDown className="user-caret" />
                 </button>
-              </>
+
+                <ul className="dropdown-menu dropdown-menu-end user-menu">
+                  <li>
+                    <div className="user-menu-header">
+                      <span className="user-avatar user-avatar-lg">
+                        {firstInitial}
+                      </span>
+                      <div>
+                        <div className="user-menu-name" title={user?.username}>
+                          {user?.username}
+                        </div>
+                        {isAdmin ? (
+                          <span className="badge user-badge admin">
+                            <FaUserShield className="me-1" /> Admin
+                          </span>
+                        ) : (
+                          <span className="badge user-badge customer">
+                            <FaUserTie className="me-1" /> Customer
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </li>
+                  <li><hr className="dropdown-divider m-0" /></li>
+                  <li>
+                    <button
+                      className="dropdown-item user-menu-logout"
+                      onClick={handleLogout}
+                    >
+                      <FaSignOutAlt className="me-2" /> Log Out
+                    </button>
+                  </li>
+                </ul>
+              </div>
             ) : (
               <>
                 <Link to="/login" className="btn btn-outline-light px-3">
