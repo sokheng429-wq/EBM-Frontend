@@ -13,10 +13,16 @@ import op1 from '../assets/op1.jpg';
 import op2 from '../assets/op2.jpg';
 import op3 from '../assets/op3.jpg';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 function Home() {
   return (
     <>
+      <SEO
+        title="Mondulkiri Elephant Tour | Ethical Elephant Sanctuary Cambodia"
+        description="Book an ethical elephant sanctuary tour in Mondulkiri, Cambodia. Jungle trekking, elephant washing, waterfalls, and authentic Bunong culture."
+      />
+
       <section id="home" className="position-relative text-white hero-section">
         <div id="heroCarousel" className="carousel slide" data-bs-ride="carousel">
           <div className="carousel-inner">
